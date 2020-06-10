@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg ba-bg-nav">
+    <a class="navbar-brand" href="#">People</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Registro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link font-weight-bolder" href="#">
+            <!-- {{ identity.name + ' ' + identity.surname}} --> Usuario
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<router-outlet></router-outlet>
+<div class="container-fluid">
+  <footer>
+    <hr>
+    <h4>Jon Tmarz<fa-icon [icon]="copyright"></fa-icon> | Todos los derechos reservados<sup>&copy;</sup></h4>
+    <p>Imágenes Cortesía de <a href='https://www.freepik.es/fotos-vectores-gratis/logo'>freepik - www.freepik.es</a></p>
+  </footer>
+</div>

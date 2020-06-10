@@ -32,7 +32,7 @@ class PeopleController extends Controller
             echo "<p>{$people->name}</p>";
             echo "<p>{$people->surname}</p>";
             echo "<p>{$people->docType}</p>";
-            echo "<p>{$people->number}</p>";
+            echo "<p>{$people->serie}</p>";
             echo "<p>{$people->email}</p>";
             echo "<p>{$people->phone}</p>";
             echo "<p>{$people->address}</p>";
@@ -90,7 +90,7 @@ class PeopleController extends Controller
                 'name'          => 'required|alpha|max:255',
                 'surname'       => 'required|alpha|max:255',
                 'docType'       => 'in:CC,CE,PASSPORT',
-                'number'        => 'required|min:6|max:11',
+                'serie'         => 'required|min:6|max:11',
                 'email'         => 'required|email|unique:people',
                 'phone'         => 'nullable',
                 'address'       => 'required|max:255',
@@ -110,7 +110,7 @@ class PeopleController extends Controller
                 $people->name = $this->params->name;
                 $people->surname = $this->params->surname;
                 $people->docType = $this->params->docType;
-                $people->number = $this->params->number;
+                $people->serie = $this->params->serie;
                 $people->email = $this->params->email;
                 $people->phone = $this->params->phone;
                 $people->address = $this->params->address;

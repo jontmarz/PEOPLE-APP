@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Kanit:600,600i,700,700i,800,800i,900,900i|Montserrat+Alternates:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+$dark-blue: #00000F;
+$golden: #CCA70A;
+$silver: #C0C0C0;
+$purple: #2A002B;
+$light-blue: #00AAFF;
+$orange: #F4CE2C;
+$black: #0C0C0C;
+
+a, p, span, input { font-family: 'Montserrat Alternates';}
+label, li, blockquote {font-family: 'Montserrat';}
+h1, h2, h3, h4, h5, h6 { font-family: 'kanit'; letter-spacing: 2px;}
+
+nav.ba-bg-nav {
+  background-color:  $dark-blue;
+
+  .navbar-nav {
+
+    .nav-link {
+      color: $silver;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .nav-link:hover {
+      color: $light-blue;
+    }
+
+    .nav-link:focus {
+      color: $golden;
+    }
+  }
+}
+
+
+footer {
+  background-color: $dark-blue;
+  color: $silver;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

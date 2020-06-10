@@ -9,7 +9,7 @@ class People extends Model
     protected $table = 'people';
 
     protected $fillable = [
-        'name', 'surname', 'docType', 'number', 'email', 'phone', 'address', 'meet'
+        'name', 'surname', 'docType', 'serie', 'email', 'phone', 'address', 'meet'
     ];
 
     public function user()

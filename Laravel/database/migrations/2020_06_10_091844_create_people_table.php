@@ -19,7 +19,7 @@ class CreatePeopleTable extends Migration
             $table->string('name', 255);
             $table->string('surname', 255);
             $table->enum('docType', ['CC', 'CE', 'PASSPORT']);
-            $table->string('number', 20)->unique();
+            $table->string('serie', 20)->unique();
             $table->string('email', 50)->unique();
             $table->integer('phone');
             $table->string('address', 255);
