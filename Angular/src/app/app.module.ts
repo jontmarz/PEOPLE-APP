@@ -7,11 +7,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
+import { PeopleComponent } from './components/people/people.component';
+import { NewPersonComponent } from './components/new-person/new-person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    LoginComponent,
+    ErrorComponent,
+    PeopleComponent,
+    NewPersonComponent
   ],
   imports: [
     BrowserModule,

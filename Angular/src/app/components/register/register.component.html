@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="container-fluid ba-component">
+  <h1 class="ba-title">{{ page_title }}</h1>
+  <p class="text-center mb-5">Identifícate en la plataforma</p>
+
+  <div class="alert alert-success col-md-6 mx-auto mt-3" *ngIf="status === 'success'">
+    El registro se ha completado correctamente, ahora ve a <a [routerLink]="['/login']">Iniciar sesión</a>
+  </div>
+  <div class="alert alert-danger col-md-6 mx-auto mt-3" *ngIf="status === 'error'">
+    El usuario ya existe
+  </div>
+
+  <form action="" class="col-md-4 ml-0 pl-0 mx-auto" #registerForm='ngForm' (ngSubmit)="onSubmit(registerForm)">
+    <div class="form-group">
+      <input type="text" placeholder="Nombre" name="name" class="form-control" #name="ngModel" [(ngModel)]="user.name" required />
+      <small class="invalid-feedback d-block" *ngIf="!name.valid && name.touched">
+        El formato de nombre no es válido
+      </small>
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Email" name="email" class="form-control" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+      <small class="invalid-feedback d-block" *ngIf="!email.valid && email.touched">
+        El formato de email no es válido
+      </small>
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+      <small class="invalid-feedback d-block" *ngIf="!password.valid && password.touched">
+        El formato de contraseña no es válido
+      </small>
+    </div>
+    <div class="text-center">
+      <input type="submit" valor="Iniciar Sesión" class="btn btn-outline-success btn-lg mb-4" [disabled]="registerForm.invalid" />
+    </div>
+  </form>
+</div>

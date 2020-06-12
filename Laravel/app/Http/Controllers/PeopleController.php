@@ -82,57 +82,58 @@ class PeopleController extends Controller
 
     public function store(Request $request)
     {
+        var_dump('esta es una prueba');
         // var_dump($this->params);
-        if (!empty($this->params_array)) {
-            $user = $this->getIdentity($request);
+        // if (!empty($this->params_array)) {
+        //     $user = $this->getIdentity($request);
 
-            $validate = \Validator::make($this->params_array,[
-                'name'          => 'required|alpha|max:255',
-                'surname'       => 'required|alpha|max:255',
-                'docType'       => 'in:CC,CE,PASSPORT',
-                'serie'         => 'required|min:6|max:11',
-                'email'         => 'required|email|unique:people',
-                'phone'         => 'nullable',
-                'address'       => 'required|max:255',
-                'meet'          => 'nullable|max:255'
+        //     $validate = \Validator::make($this->params_array,[
+        //         'name'          => 'required|alpha|max:255',
+        //         'surname'       => 'required|alpha|max:255',
+        //         'docType'       => 'in:CC,CE,PASSPORT',
+        //         'serie'         => 'required|min:6|max:11',
+        //         'email'         => 'required|email|unique:people',
+        //         'phone'         => 'nullable',
+        //         'address'       => 'required|max:255',
+        //         'meet'          => 'nullable|max:255'
 
-            ]);
+        //     ]);
 
-            if ($validate->fails()) {
-                $data = [
-                    'status'    => 'error',
-                    'code'      => 404,
-                    'message'   => 'No se han guardado los datos'
-                ];
-            } else {
-                $people = new People();
-                $people->user_id = $user->sub;
-                $people->name = $this->params->name;
-                $people->surname = $this->params->surname;
-                $people->docType = $this->params->docType;
-                $people->serie = $this->params->serie;
-                $people->email = $this->params->email;
-                $people->phone = $this->params->phone;
-                $people->address = $this->params->address;
-                $people->meet = $this->params->meet;
-                $people->save();
+        //     if ($validate->fails()) {
+        //         $data = [
+        //             'status'    => 'error',
+        //             'code'      => 404,
+        //             'message'   => 'No se han guardado los datos'
+        //         ];
+        //     } else {
+        //         $people = new People();
+        //         $people->user_id = $user->sub;
+        //         $people->name = $this->params->name;
+        //         $people->surname = $this->params->surname;
+        //         $people->docType = $this->params->docType;
+        //         $people->serie = $this->params->serie;
+        //         $people->email = $this->params->email;
+        //         $people->phone = $this->params->phone;
+        //         $people->address = $this->params->address;
+        //         $people->meet = $this->params->meet;
+        //         $people->save();
 
-                $data = [
-                    'status'    => 'success',
-                    'code'      => 200,
-                    'Person'    => $people
-                ];
-            }
+        //         $data = [
+        //             'status'    => 'success',
+        //             'code'      => 200,
+        //             'Person'    => $people
+        //         ];
+        //     }
 
-        } else {
-            $data = [
-                'status'    => 'error',
-                'code'      => 404,
-                'message'   => 'No se han guardado los datos de la persona'
-            ];
-        }
+        // } else {
+        //     $data = [
+        //         'status'    => 'error',
+        //         'code'      => 404,
+        //         'message'   => 'No se han guardado los datos de la persona'
+        //     ];
+        // }
 
-        return response()->json($data, $data['code']);
+        // return response()->json($data, $data['code']);
     }
 
     public function update($id, Request $request)

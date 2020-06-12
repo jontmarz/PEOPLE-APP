@@ -1,29 +1,34 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg ba-bg-nav">
-    <a class="navbar-brand" href="#">People</a>
+    <a class="navbar-brand ba-logo" href="#">
+      <img src="../assets/img/logo.png" alt="Logo" class="d-inline-block">
+      {{title}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto" *ngIf="!identity">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
         </li>
       </ul>
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Registro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+      <ul class="navbar-nav mr-auto" *ngIf="identity">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/dashboard']">Personas</a>
         </li>
       </ul>
-      <ul class="navbar-nav navbar-right">
+      <ul class="navbar-nav navbar-right" *ngIf="!identity">
         <li class="nav-item">
-          <a class="nav-link font-weight-bolder" href="#">
-            <!-- {{ identity.name + ' ' + identity.surname}} --> Usuario
-          </a>
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right" *ngIf="identity">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link font-weight-bolder" [routerLink]="['logout/1']">Cerrar Sesión</a>
         </li>
       </ul>
     </div>
@@ -33,7 +38,7 @@
 <div class="container-fluid">
   <footer>
     <hr>
-    <h4>Jon Tmarz<fa-icon [icon]="copyright"></fa-icon> | Todos los derechos reservados<sup>&copy;</sup></h4>
+    <h4>Jon Tmarz<fa-icon [icon]="copyright"></fa-icon> | <small>Todos los derechos reservados</small><sup>&copy;</sup></h4>
     <p>Imágenes Cortesía de <a href='https://www.freepik.es/fotos-vectores-gratis/logo'>freepik - www.freepik.es</a></p>
   </footer>
 </div>

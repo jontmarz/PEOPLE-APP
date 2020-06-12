@@ -12,6 +12,37 @@ a, p, span, input { font-family: 'Montserrat Alternates';}
 label, li, blockquote {font-family: 'Montserrat';}
 h1, h2, h3, h4, h5, h6 { font-family: 'kanit'; letter-spacing: 2px;}
 
+.ba-title {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ba-logo {
+  width: 10%;
+
+    img {
+      width: 40%;
+    }
+}
+
+.ba-background {
+  background-color: rgba(204, 167, 10, 0.5);
+
+  .ba-banner {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    align-items: center;
+    margin: auto;
+
+
+    p {
+      font-size: 25px;
+      text-align: center;
+    }
+  }
+}
+
 nav.ba-bg-nav {
   background-color:  $dark-blue;
 
@@ -33,16 +64,134 @@ nav.ba-bg-nav {
   }
 }
 
+.ba-component {
+  margin-top: 35px;
+  max-height: auto;
+}
+
+.ba-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 15%;
+  margin: 2vw auto 2vw auto;
+
+
+  .btn-blue {
+    color: white !important;
+    background-color: $light-blue !important;
+    border-color: $light-blue !important;
+    margin: 0 1vw;
+    font-size: 30px;
+
+    &:hover {
+      background-color: rgba(54, 189, 175, 0.9) !important;
+      border-color: transparent !important;
+    }
+  }
+}
+
+// tabla
+.datagrid {
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #2A002B;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+  }
+
+  td, th {
+    padding: 3px 10px;
+  }
+
+  thead {
+
+    th {
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00000F), color-stop(1, #00006B) );
+      background:-moz-linear-gradient( center top, #00000F 5%, #00006B 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000F', endColorstr='#00006B');
+      background-color:#00000F;
+      color:#FFFFFF;
+      font-size: 15px;
+      font-weight: bold;
+      border-left: 1px solid #0070A8;
+      text-align: center;
+    }
+
+    &:first-child {
+      border: none;
+    }
+  }
+  tbody {
+    tr {
+
+      td {
+        color: #4F4F4F;
+        border-left: 1px solid #E1EEF4;
+        font-size: 12px;font-weight: normal;
+
+      }
+
+      &:nth-child(even) {
+        background: #D1E0FF;
+        color: #0C0C0C;
+      }
+
+      &:first-child {
+        border-left: none;
+      }
+
+    }
+
+    &:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+
+    .ba-btn-act, .ba-btn-act1 {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-icon {
+      font-size: 25px;
+      background-color: $light-blue;
+      color: white;
+    }
+  }
+
+  .ba-warning {
+    color: red;
+    font-weight: 600;
+  }
+
+}
+
+.ba-checkbox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
 
 footer {
   background-color: $dark-blue;
   color: $silver;
-  position: relative;
+  // position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 98%;
   height: 80px;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .svg-inline--fa.fa-w-20 {
+    width: 0.7em;
+  }
 }

@@ -1,14 +1,14 @@
-export class people {
+export class People {
   constructor(
-    id: number,
-    user_id: number,
-    name: string,
-    surname: string,
-    docType: string,
-    serie: string,
-    email: string,
-    phone: number,
-    address: string,
-    meet: string,
+    public id: number,
+    public user_id: number,
+    public name: string,
+    public surname: string,
+    public docType: string,
+    public serie: string,
+    public email: string,
+    public phone: number,
+    public address: string,
+    public meet: string,
   ){}
 }

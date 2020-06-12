@@ -19,11 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test-orm', 'peopleController@test');
+Route::get('/api/test-orm', 'peopleController@test');
 
 // Usuario
-Route::post('api/register', 'userController@register');
-Route::post('api/login', 'userController@login');
+Route::post('/api/register', 'userController@register');
+Route::post('/api/login', 'userController@login');
 
 // People
-Route::resource('/api/people', 'peopleController');
+Route::resource('api/people', 'peopleController');

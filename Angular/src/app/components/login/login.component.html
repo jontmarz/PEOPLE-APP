@@ -1,0 +1,30 @@
+<div class="container-fluid ba-component">
+  <h1 class="ba-title">{{ page_title }}</h1>
+  <p class="text-center mb-5">Identifícate en la plataforma</p>
+
+  <form action="" class="col-md-4 ml-0 pl-0 mx-auto" #loginForm='ngForm' (ngSubmit)="onSubmit(loginForm)">
+    <div class="input-group flex-nowrap mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><fa-icon [icon]="login"></fa-icon></span>
+      </div>
+      <input type="email" placeholder="Email" name="email" class="form-control" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+      <small class="invalid-feedback d-block" *ngIf="!email.valid && email.touched">
+        El formato de email no es válido
+      </small>
+    </div>
+    <div class="input-group flex-nowrap mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><fa-icon [icon]="pass"></fa-icon></span>
+      </div>
+      <input type="password" placeholder="Password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" required />
+      <small class="invalid-feedback d-block" *ngIf="!password.valid && password.touched">
+        La contraseña es incorrecta, vuelve a intentar
+      </small>
+    </div>
+    <div class="text-center">
+      <input type="submit" valor="Iniciar Sesión" class="btn btn-outline-success btn-lg mb-4" [disabled]="loginForm.invalid">
+    </div>
+  </form>
+</div>
+
+
