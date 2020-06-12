@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserService } from './services/user.service';
+import { IdentityGuard } from './services/identity.guard';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -31,7 +33,9 @@ import { NewPersonComponent } from './components/new-person/new-person.component
     HttpClientModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    UserService,
+    IdentityGuard
   ],
   bootstrap: [AppComponent]
 })
