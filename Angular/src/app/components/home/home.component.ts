@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     this.page_title = 'Bienvenido a la Plataforma';
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

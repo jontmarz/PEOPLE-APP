@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from 'src/app/services/user.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,8 +20,7 @@ export class RegisterComponent implements OnInit {
     this.user = new User(1, '', '', '');
   }
 
-  ngOnInit(): void {
-    console.log(this._userService.test());
+  ngOnInit() {
   }
 
   onSubmit(form) {
@@ -40,5 +38,4 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
 }

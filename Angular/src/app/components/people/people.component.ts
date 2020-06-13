@@ -7,7 +7,6 @@ import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import { faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { faFileExport } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
@@ -36,7 +35,7 @@ export class PeopleComponent implements OnInit {
     this.token = this._userService.getToken();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getPeople();
   }
 
@@ -45,7 +44,7 @@ export class PeopleComponent implements OnInit {
       response => {
         if (response.status === 'success') {
           this.people = response.Person;
-          console.log(response.Person);
+          // console.log(response.Person);
         }
       }, error => {
         console.log(error);

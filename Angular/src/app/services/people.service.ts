@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { People } from '../models/people';
 import { Global } from './global';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +30,7 @@ export class PeopleService {
     const json = JSON.stringify(people);
     const params = 'json=' + json;
 
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    const headers = new HttpHeaders().set('Content-Type', 'application/x/www/form/urlencoded')
                                      .set('Authorization', token);
 
     return this._http.post(this.url + '/people', params, {headers});
@@ -39,7 +38,7 @@ export class PeopleService {
 
 
   delete(token, id): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x/www/form/urlencoded')
+    const headers = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded')
                                      .set('Authorization', token);
 
     return this._http.delete(this.url + '/people/' + id, {headers});

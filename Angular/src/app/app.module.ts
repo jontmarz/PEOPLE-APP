@@ -8,22 +8,22 @@ import { UserService } from './services/user.service';
 import { IdentityGuard } from './services/identity.guard';
 
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
+import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ErrorComponent } from './components/error/error.component';
-import { PeopleComponent } from './components/people/people.component';
 import { NewPersonComponent } from './components/new-person/new-person.component';
+import { PeopleComponent } from './components/people/people.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    ErrorComponent,
     HomeComponent,
     LoginComponent,
-    ErrorComponent,
+    NewPersonComponent,
     PeopleComponent,
-    NewPersonComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

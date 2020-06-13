@@ -1,7 +1,6 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
 import { faTrademark } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from './services/user.service';
-
 
 @Component({
   selector: 'app-root',

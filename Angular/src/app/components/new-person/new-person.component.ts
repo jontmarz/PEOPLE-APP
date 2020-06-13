@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 import { PeopleService } from '../../services/people.service';
 import { People } from '../../models/people';
 import { Global } from '../../services/global';
-
+import { DocType } from '../../models/doc-type.enum';
 @Component({
   selector: 'app-new-person',
   templateUrl: './new-person.component.html',
@@ -28,17 +28,25 @@ export class NewPersonComponent implements OnInit {
     private _peopleService: PeopleService,
   ) {
     this.page_title = 'Ingresar nueva persona';
-    this.identity = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.is_edit = false;
   }
 
-  ngOnInit(): void {
-    this.people = new People(1, this.identity.sub, '', '', '', '', '', 1, '', '');
-    console.log(this.people);
+  types: any[] = [];
+
+  ngOnInit() {
+    this.people = new People(1, 1, '', '', DocType.CC, '', '', null, '', 'null');
+
+    for (const item in DocType) {
+      if (isNaN(Number(item))) {
+        this.types.push({text: item, value: DocType[item]});
+      }
+    }
   }
 
   onSubmit(from) {
+    // console.log(this.people);
     this._peopleService.create(this.token, this.people).subscribe(
       response => {
         if (response.status === 'success') {
@@ -55,4 +63,8 @@ export class NewPersonComponent implements OnInit {
     );
   }
 
+  refresh() {
+    window.location.reload();
+    this.people = new People(1, 1, '', '', DocType.CC, '', '', null, '', '');
+  }
 }

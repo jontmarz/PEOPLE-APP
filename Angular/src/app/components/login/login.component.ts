@@ -4,8 +4,6 @@ import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { faLock} from '@fortawesome/free-solid-svg-icons';
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,12 +29,11 @@ export class LoginComponent implements OnInit {
     this.user = new User (1, '', '', '');
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.logout();
   }
 
   onSubmit(form) {
-    console.log(this.user);
     this._userService.signup(this.user).subscribe(
       response => {
         if (response.status !== 'error') {

@@ -17,13 +17,13 @@ export class IdentityGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      const identity = this._userService.getIdentity();
-      if (identity) {
-        return true;
-      } else {
-        this._router.navigate(['/inicio']);
-        return  false;
-      }
+    const identity = this._userService.getIdentity();
+    if (identity) {
+      return true;
+    } else {
+      this._router.navigate(['/inicio']);
+      return  false;
+    }
   }
 
 }
