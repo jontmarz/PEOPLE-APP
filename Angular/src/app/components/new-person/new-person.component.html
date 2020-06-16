@@ -13,39 +13,30 @@
 
   <form action="" class="col-md-5 mx-auto" #newPerson="ngForm" (ngSubmit)="onSubmit(newPerson)">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Nombre" name="nombre" #name="ngModel" [(ngModel)]="people.name" required pattern="[a-zA-Z0-9]+">
+      <input type="text" class="form-control" placeholder="Nombres" name="nombre" #name="ngModel" [(ngModel)]="people.name" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
       <small class="invalid-feedback d-block" *ngIf="!name.valid && name.touched">
         El texto no es válido
       </small>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Apellidos" name="apellido" #surname="ngModel" [(ngModel)]="people.surname" required pattern="[a-zA-Z0-9]+">
+      <input type="text" class="form-control" placeholder="Apellidos" name="apellido" #surname="ngModel" [(ngModel)]="people.surname" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
       <small class="invalid-feedback d-block" *ngIf="!surname.valid && surname.touched">
         El texto no es válido
       </small>
     </div>
     <label for="identificacion">Tipo de identificación</label>
     <div class="ba-checkbox">
-      <!-- <select name="docType" id="inputGroupSelect01" class="custom-select" #docType="ngModel" [(ngModel)]="people.docType">
-        <option *ngFor="let type of types" [value]="type.value">{{ type.text }}</option>
-      </select> -->
       <div class="form-check form-check-inline" *ngFor="let type of types">
         <input class="form-check-input" type="radio" checked name="inlineRadioOptions" id="inlineRadio1" [value]="type.value" #docType="ngModel" [(ngModel)]="people.docType">
         <label class="form-check-label" for="inlineRadio1" >{{ type.text }}</label>
       </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required pattern="[0-9]{6,11}$">
+      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="docType === CC ? numPattern : strPattern" />
       <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
         El numero de docmuento no es válido
       </small>
     </div>
-    <!-- <div class="form-group">
-      <input type="text" class="form-control" placeholder="Número de documento" name="serieStr" #serie="ngModel" [(ngModel)]="people.serie" required pattern="[a-zA-Z0-9]{6,11}$">
-      <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
-        El numero de docmuento no es válido
-      </small>
-    </div> -->
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="people.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
       <small class="invalid-feedback d-block" *ngIf="!email.valid && email.touched">
@@ -53,7 +44,7 @@
       </small>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Número de teléfono" name="phone" #phone="ngModel" [(ngModel)]="people.phone" required pattern="[0-9]{7,15}$">
+      <input type="text" class="form-control" placeholder="Número de teléfono" name="phone" #phone="ngModel" [(ngModel)]="people.phone" required pattern="[0-9]{7,25}$">
       <small class="invalid-feedback d-block" *ngIf="!phone.valid && phone.touched">
         El numero de telefono no es válido
       </small>
@@ -65,13 +56,13 @@
       </small>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="¿Cómo nos conoces?" name="meeet" #meet="ngModel" [(ngModel)]="people.meet">
+      <input type="text" class="form-control" placeholder="¿Cómo nos conoces?" name="meet" #meet="ngModel" [(ngModel)]="people.meet">
       <small class="invalid-feedback d-block" *ngIf="!meet.valid && meet.touched">
         El texto no es válido
       </small>
     </div>
     <div class="text-center mb-4">
-      <input type="submit" value="Enviar" class="btn btn-outline-success btn-lg mr-3" [disabled]="!newPerson.valid" />
+      <input type="submit" value="Guardar" class="btn btn-outline-success btn-lg mr-3" [disabled]="newPerson.invalid" />
       <button type="button" class="btn btn-outline-secondary btn-lg ml-3" (click)="refresh()">Limpiar</button>
     </div>
   </form>

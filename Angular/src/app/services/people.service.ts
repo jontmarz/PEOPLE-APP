@@ -21,23 +21,37 @@ export class PeopleService {
   }
 
   getPerson(): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x/www/form/urlencoded');
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
     return this._http.get(this.url + '/people', {headers});
+  }
+  getPersonEdit(id): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.get(this.url + '/people/' + id, {headers});
   }
 
   create(token, people): Observable<any> {
     const json = JSON.stringify(people);
     const params = 'json=' + json;
 
-    const headers = new HttpHeaders().set('Content-Type', 'application/x/www/form/urlencoded')
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                      .set('Authorization', token);
 
     return this._http.post(this.url + '/people', params, {headers});
   }
 
+  update(token, people, id): Observable<any> {
+    const json = JSON.stringify(people);
+    const params = 'json=' + json;
 
-  delete(token, id): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                     .set('Authorization', token);
+
+    return this._http.put(this.url + '/people/' + id, params, {headers});
+  }
+
+  delete(token, id) {
     const headers = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded')
                                      .set('Authorization', token);
 

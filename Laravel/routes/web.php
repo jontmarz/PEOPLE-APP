@@ -24,6 +24,7 @@ Route::get('/api/test-orm', 'peopleController@test');
 // Usuario
 Route::post('/api/register', 'userController@register');
 Route::post('/api/login', 'userController@login');
+Route::post('/api/user/test', 'userController@testToken');
 
 // People
 Route::resource('api/people', 'peopleController');

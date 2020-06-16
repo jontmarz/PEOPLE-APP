@@ -1,6 +1,6 @@
-<p>people works!</p>
 <div class="container-fluid ba-component">
   <h1 class="ba-title">{{ page_title }}</h1>
+  <!-- Inicio tabla -->
   <div class="datagrid" >
     <table>
       <thead>
@@ -26,35 +26,121 @@
           <td>{{person.address}}</td>
           <td>{{person.meet}}</td>
           <div class="ba-btn-act">
-            <td><a [routerLink]="['/nuevo']" class="btn btn-icon"><fa-icon [icon]="userEdit"></fa-icon></a></td>
-            <td><button data-toggle="modal" [attr.data-target]="'#myModal'+ person.id" class="btn btn-icon">
-                  <fa-icon [icon]="UserDelete"></fa-icon>
-                </button>
-                <div id="myModal{{person.id}}" class="modal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Realmente quieres borrar a <span class="ba-warning">{{person.name}}</span></h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Esta acción es definitiva. Una vez realizada, no se puede deshacer</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button (click)="deletePerson(person.id)" type="button" class="btn btn-primary" data-dismiss="modal">Borrar</button>
-                      </div>
+            <!-- Botones de acción -->
+            <!-- Editar Item -->
+            <td>
+              <button  data-toggle="modal" [attr.data-target]="'#editModal'+ person.id"  class="btn btn-icon">
+                <fa-icon [icon]="userEdit"></fa-icon>
+              </button>
+              <div id="editModal{{person.id}}" class="modal .ba-edit-form" tabindex="-1" role="dialog">
+                <div class="modal-dialog .modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title ba-title-form">EDITAR PERSONA</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- Formulario Edición -->
+                    <div class="ba-edit">
+                      <form action=""  class="mx-auto" #editPerson="ngForm" (ngSubmit)="onSubmit(editPerson)">
+                        <div class="modal-body">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="nombre" #name="ngModel" [(ngModel)]="person.name" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
+                            <small class="invalid-feedback d-block" *ngIf="!name.valid && name.touched">
+                              El texto no es válido
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="apellido" #surname="ngModel" [(ngModel)]="person.surname" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
+                            <small class="invalid-feedback d-block" *ngIf="!surname.valid && surname.touched">
+                              El texto no es válido
+                            </small>
+                          </div>
+                          <label for="identificacion">Tipo de identificación</label>
+                          <div class="ba-checkbox">
+                            <div class="form-check form-check-inline" *ngFor="let type of types">
+                              <input class="form-check-input" type="radio" checked name="inlineRadioOptions" id="inlineRadio1" [value]="type.value" #docType="ngModel" [(ngModel)]="person.docType">
+                              <label class="form-check-label" for="inlineRadio1" >{{ type.text }}</label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="serieNum" #serie="ngModel" [(ngModel)]="person.serie" required ng-pattern="passport !== pasaporte ? '[0-9]{6,11}$' : ''">
+                            <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
+                              El numero de docmuento no es válido
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="email" #email="ngModel" [(ngModel)]="person.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <small class="invalid-feedback d-block" *ngIf="!email.valid && email.touched">
+                              El formato de email no es válido
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="person.phone" required pattern="[0-9]{7,25}$">
+                            <small class="invalid-feedback d-block" *ngIf="!phone.valid && phone.touched">
+                              El numero de telefono no es válido
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="person.address" required>
+                            <small class="invalid-feedback d-block" *ngIf="!address.valid && address.touched">
+                              El formato de direcciòn no es válido
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="meet" #meet="ngModel" [(ngModel)]="person.meet">
+                            <small class="invalid-feedback d-block" *ngIf="!meet.valid && meet.touched">
+                              El texto no es válido
+                            </small>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- Fin Formulario Edición -->
+                  </div>
+                </div>
+              </div>
+            </td>
+            <!-- Fin Editar Item -->
+            <!-- Eliminar Item -->
+            <td>
+              <button data-toggle="modal" [attr.data-target]="'#delModal'+ person.id" class="btn btn-icon">
+              <fa-icon [icon]="UserDelete"></fa-icon>
+              </button>
+              <div id="delModal{{person.id}}" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Realmente quieres borrar a <span class="ba-warning">{{person.name}}</span></h5>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Esta acción es definitiva. Una vez realizada, no se puede deshacer</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button (click)="deletePerson(person.id)" type="button" class="btn btn-primary" data-dismiss="modal">Borrar</button>
                     </div>
                   </div>
                 </div>
+              </div>
             </td>
+            <!-- Fin Eliminar Item -->
           </div>
+          <!-- Fin Botones de Acción -->
         </tr>
       </tbody>
     </table>
+    <!-- Fin tabla -->
   </div>
   <div class="ba-buttons">
     <a [routerLink]="['/nuevo']" class="btn btn-blue"><fa-icon [icon]="userNew"></fa-icon></a>
-    <a [routerLink]="['/exportar']" class="btn btn-blue"><fa-icon [icon]="exportData"></fa-icon></a>
+    <a (click)="download()" class="btn btn-blue"><fa-icon [icon]="exportData"></fa-icon></a>
+
   </div>
 </div>

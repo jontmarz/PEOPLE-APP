@@ -20,6 +20,7 @@ export class NewPersonComponent implements OnInit {
   public url;
   public status;
   public is_edit: boolean;
+  public passport;
 
   constructor(
     private _route: ActivatedRoute,
@@ -31,12 +32,13 @@ export class NewPersonComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.is_edit = false;
+    this.passport = DocType;
   }
 
   types: any[] = [];
 
   ngOnInit() {
-    this.people = new People(1, 1, '', '', DocType.CC, '', '', null, '', 'null');
+    this.people = new People(1, this.identity.sub, '', '', DocType.CC, '', '', null, '', null);
 
     for (const item in DocType) {
       if (isNaN(Number(item))) {
@@ -45,7 +47,7 @@ export class NewPersonComponent implements OnInit {
     }
   }
 
-  onSubmit(from) {
+  onSubmit(form) {
     // console.log(this.people);
     this._peopleService.create(this.token, this.people).subscribe(
       response => {
@@ -58,6 +60,7 @@ export class NewPersonComponent implements OnInit {
           this.status = 'error';
         }
       }, error => {
+        console.log(error);
         this.status = 'error';
       }
     );
@@ -65,6 +68,6 @@ export class NewPersonComponent implements OnInit {
 
   refresh() {
     window.location.reload();
-    this.people = new People(1, 1, '', '', DocType.CC, '', '', null, '', '');
+    this.people = new People(1, this.identity.sub, '', '', DocType.CC, '', '', null, '', null);
   }
 }

@@ -17,6 +17,9 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/dashboard']">Personas</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/nuevo']">Nuevo</a>
+        </li>
       </ul>
       <ul class="navbar-nav navbar-right" *ngIf="!identity">
         <li class="nav-item">
@@ -26,7 +29,10 @@
           <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
       </ul>
-      <ul class="navbar-nav navbar-right" *ngIf="identity">
+      <ul class="navbar-nav navbar-right" *ngIf="identity && identity.name">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link font-weight-bolder ba-username">Usuario: {{ identity.name }}</a>
+        </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link font-weight-bolder" [routerLink]="['logout/1']">Cerrar Sesión</a>
         </li>

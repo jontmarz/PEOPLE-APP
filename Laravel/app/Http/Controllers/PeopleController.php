@@ -193,26 +193,27 @@ class PeopleController extends Controller
 
 
         $people = People::where('id', $id)
-                        ->where('user_id', $user->sub);
+                        // ->where('user_id', $user->sub)
+                        ->first();
 
-        var_dump($user); die();
+        // var_dump($user); die();
 
-        // if (!empty($people)) {
-        //     $people->delete();
+        if (!empty($people)) {
+            $people->delete();
 
-        //     $data =[
-        //         'status'    => 'success',
-        //         'code'      => 200,
-        //         'Person'    => $people
-        //     ];
-        // } else {
-        //     $data =[
-        //         'status'    => 'error',
-        //         'code'      => 404,
-        //         'message'   => 'Registro no existe'
-        //     ];
-        // }
+            $data =[
+                'status'    => 'success',
+                'code'      => 200,
+                'Person'    => $people
+            ];
+        } else {
+            $data =[
+                'status'    => 'error',
+                'code'      => 404,
+                'message'   => 'Registro no existe'
+            ];
+        }
 
-        // return response()->json($data, $data['code']);
+        return response()->json($data, $data['code']);
     }
 }

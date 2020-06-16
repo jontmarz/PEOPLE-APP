@@ -62,6 +62,11 @@ nav.ba-bg-nav {
       color: $golden;
     }
   }
+
+  .ba-username {
+    text-transform: capitalize;
+    color: $orange !important;
+  }
 }
 
 .ba-component {
@@ -84,7 +89,7 @@ nav.ba-bg-nav {
     font-size: 30px;
 
     &:hover {
-      background-color: rgba(54, 189, 175, 0.9) !important;
+      background-color: $golden !important;
       border-color: transparent !important;
     }
   }
@@ -154,15 +159,29 @@ nav.ba-bg-nav {
       }
     }
 
-    .ba-btn-act, .ba-btn-act1 {
+    .ba-btn-act {
       display: flex;
       justify-content: center;
+
+      .ba-title-form {
+        width: 100%;
+        text-align: center !important;
+        color: $light-blue;
+      }
     }
 
     .btn-icon {
       font-size: 25px;
       background-color: $light-blue;
       color: white;
+
+      &:hover {
+        background-color: $golden;
+      }
+    }
+
+    .btn-act:hover {
+      background-color: $golden;
     }
   }
 
@@ -170,7 +189,6 @@ nav.ba-bg-nav {
     color: red;
     font-weight: 600;
   }
-
 }
 
 .ba-checkbox {

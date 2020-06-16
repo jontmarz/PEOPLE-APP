@@ -76,7 +76,7 @@ class UserController extends Controller
     ]);
 
     if ($validate->fails()) {
-        $singup = [
+        $signup = [
             'status'    => 'error',
             'code'      => 404,
             'message'   => 'El usuario no ha sido identificado',
@@ -85,15 +85,22 @@ class UserController extends Controller
     } else {
         $pwd = hash('sha256', $this->params->password);
 
-        $singup = $jwtAuth->signup($this->params->email, $pwd);
+        $signup = $jwtAuth->signup($this->params->email, $pwd);
 
-        if (!empty($this->parms->getToken)) {
-            $singup = $jwtAuth->signup($this->params->email, $pwd, true);
+        if (!empty($this->params->getToken)) {
+            $signup = $jwtAuth->signup($this->params->email, $pwd, true);
         }
     }
 
-    return response()->json($singup, 200);
+    return response()->json($signup, 200);
     }
 
+    public function testToken(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $jwtAuth = new \JwtAuth();
+        $user = $jwtAuth->checkToken($token, true);
 
+        return response()->json($user);
+    }
 }
