@@ -10,10 +10,10 @@
 
 ## FRONTEND
  Lo ideal es colocar los archivos en la raiz del servidor __Fuera de la carpeta PEOPLE-APP__, o crear un subdominio (host virtual en caso de servidor local), y seguir los siguientes pasos:
-    1. Ir a la carpeta en la ruta PEOPLE-APP > Angular > dist.
-    2. Abrir la carpeta Angular
-    3. Copiar y pegar los archivos de la carpeta en la raíz del servidor o en la carpeta del subdominio (host virtual)
-    4. Ejecutar el archivo **index.html** en el navegador
+    1.Ir a la carpeta en la ruta PEOPLE-APP > Angular > dist.
+    2.Abrir la carpeta Angular
+    3.Copiar y pegar los archivos de la carpeta en la raíz del servidor o en la carpeta del subdominio (host virtual)
+    4.Ejecutar el archivo **index.html** en el navegador
  
  ## FUNCIONALIDAD
 La funcionalidad de la aplicación es muy simple, está creada para agrgar datos de personas, listar, editar y eliminar los datos de los mismos.
