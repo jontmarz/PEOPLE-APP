@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="strPattern" />
+      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="people.docType === 'CC' ? numPattern : strPattern" />
       <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
         El numero de docmuento no es válido
       </small>
