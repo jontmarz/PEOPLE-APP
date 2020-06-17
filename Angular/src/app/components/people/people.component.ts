@@ -29,8 +29,7 @@ export class PeopleComponent implements OnInit {
   public identity;
   public token;
   public status;
-  public numPattern: string;
-  public strPattern: string;
+
 
   constructor(
     private _peopleService: PeopleService,
@@ -43,8 +42,6 @@ export class PeopleComponent implements OnInit {
     this.url = Global.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.numPattern = '[0-9]{6,11}$';
-    this.strPattern = '[a-zA-Z0-9]{6,11}$';
   }
 
   types: any[] = [];
@@ -114,4 +111,6 @@ export class PeopleComponent implements OnInit {
       }
     );
   }
+
+  onSubmit(form) {}
 }

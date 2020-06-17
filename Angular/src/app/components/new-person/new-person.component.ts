@@ -20,7 +20,8 @@ export class NewPersonComponent implements OnInit {
   public url;
   public status;
   public is_edit: boolean;
-  public passport;
+  public numPattern: string;
+  public strPattern: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,7 +33,8 @@ export class NewPersonComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.is_edit = false;
-    this.passport = DocType;
+    this.numPattern = '[0-9]{6,11}$';
+    this.strPattern = '[a-zA-Z0-9]{6,11}$';
   }
 
   types: any[] = [];

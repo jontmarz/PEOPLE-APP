@@ -1,7 +1,6 @@
 <div class="container-fluid ba-component">
   <h1 class="ba-title">{{ page_title }}</h1>
   <p class="text-center" *ngIf="!is_edit">Ingrese los datos de la persona nueva</p>
-  <!-- <p class="text-center" *ngIf="is_edit && person">Modifica los datos de {{ person.name }} {{ person.surname }}</p> -->
 
   <div class="alert alert-success col-md-6 mx-auto mt-3" *ngIf="status === 'success'">
     Los datos de la entrada se han guardado correctamente.
@@ -32,11 +31,17 @@
       </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="docType === CC ? numPattern : strPattern" />
+      <input type="text" class="form-control" placeholder="Número de documento" name="serieNum" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="strPattern" />
       <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
         El numero de docmuento no es válido
       </small>
     </div>
+    <!-- <div class="form-group">
+      <input type="text" class="form-control" placeholder="Número de documento" name="serieStr" #serie="ngModel" [(ngModel)]="people.serie" required [pattern]="type.value === CC ? numPattern : strPattern">
+      <small class="invalid-feedback d-block" *ngIf="!serie.valid && serie.touched">
+        El numero de docmuento no es válido
+      </small>
+    </div> -->
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="people.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
       <small class="invalid-feedback d-block" *ngIf="!email.valid && email.touched">
