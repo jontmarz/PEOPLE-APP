@@ -70,29 +70,29 @@ class UserController extends Controller
     {
         $jwtAuth = new \JwtAuth;
 
-    $validate = \Validator::make($this->params_array, [
+		$validate = \Validator::make($this->params_array, [
         'email'     => 'required|email',
         'password'  => 'required'
-    ]);
+		]);
 
-    if ($validate->fails()) {
-        $signup = [
-            'status'    => 'error',
-            'code'      => 404,
-            'message'   => 'El usuario no ha sido identificado',
-            'error'     => $validate->errors()
-        ];
-    } else {
-        $pwd = hash('sha256', $this->params->password);
+		if ($validate->fails()) {
+			$signup = [
+				'status'    => 'error',
+				'code'      => 404,
+				'message'   => 'El usuario no ha sido identificado',
+				'error'     => $validate->errors()
+			];
+		} else {
+			$pwd = hash('sha256', $this->params->password);
 
-        $signup = $jwtAuth->signup($this->params->email, $pwd);
+			$signup = $jwtAuth->signup($this->params->email, $pwd);
 
-        if (!empty($this->params->getToken)) {
-            $signup = $jwtAuth->signup($this->params->email, $pwd, true);
-        }
-    }
+			if (!empty($this->params->getToken)) {
+				$signup = $jwtAuth->signup($this->params->email, $pwd, true);
+			}
+		}
 
-    return response()->json($signup, 200);
+		return response()->json($signup, 200);
     }
 
     public function testToken(Request $request)
